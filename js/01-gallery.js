@@ -34,7 +34,8 @@ function openLargeCard(event) {
   window.addEventListener(`keydown`, closeLargeCard);
     function closeLargeCard(event) {
       if (event.code === "Escape");
-      instance.close();
+        instance.close();
+      window.removeEventListener(`keydown`, closeLargeCard);
     }
   }
 }
