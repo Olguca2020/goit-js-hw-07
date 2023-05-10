@@ -34,3 +34,4 @@ function openLargeCard(event) {
     console.log(event.code === "Escape");
   }
 }
+console.log(1)
