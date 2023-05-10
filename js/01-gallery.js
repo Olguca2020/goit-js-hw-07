@@ -24,13 +24,20 @@ function openLargeCard(event) {
   event.preventDefault();
   if (event.target.nodeName !== `IMG`) {
     return;
-  } else {
+  } else {      
     const path = event.target.dataset.source;
-    const instance = basicLightbox.create(`<img src = "${path}"/>`);
+    const instance = basicLightbox.create(
+      `<img src = "${path}" alt="${event.target.alt}"/>`
+    );
     instance.show();
-  }
+  
   window.addEventListener(`keydown`, closeLargeCard);
-  function closeLargeCard(event) {
-    console.log(event.code === "Escape");
+    function closeLargeCard(event) {
+      if (event.code === "Escape");
+      instance.close();
+    }
   }
 }
+
+
+
