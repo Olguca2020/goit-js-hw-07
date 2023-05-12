@@ -15,20 +15,10 @@ function createGalleryMarkup(items) {
     .join("");
 }
 
-cardsContainer.addEventListener(`click`, openLargeCard);
-function openLargeCard(e) {
-  e.preventDefault();
-  if (e.target.tagName !== `IMG`) {
-    return;
-  } else {
-    let gallery = new SimpleLightbox(".gallery a", {
-      captions: true,
-      captionSelector: "img",
-      captionType: "attr",
-      captionsData: "alt",
-      captionPosition: "bottom",
+    let gallery = new SimpleLightbox(".gallery a", {      
+      captionsData: "alt",      
       captionDelay: 250,
     });
     gallery.on("show.simplelightbox", function () {});
-  }
-}
+  
+

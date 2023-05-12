@@ -1,4 +1,4 @@
-import { galleryItems } from './gallery-items.js';
+import { galleryItems } from "./gallery-items.js";
 const cardsContainer = document.querySelector(`.gallery`);
 const cardsMarkup = createGalleryMarkup(galleryItems);
 cardsContainer.insertAdjacentHTML(`beforeend`, cardsMarkup);
@@ -24,21 +24,23 @@ function openLargeCard(event) {
   event.preventDefault();
   if (event.target.nodeName !== `IMG`) {
     return;
-  } else {      
+  } else {
     const path = event.target.dataset.source;
     const instance = basicLightbox.create(
-      `<img src = "${path}" alt="${event.target.alt}"/>`
+      `<img src = "${path}" alt="${event.target.alt}"/>`,
+      {
+        onClose: (instance) => {
+        window.removeEventListener(`keydown`, closeLargeCard);
+        },
+      }
     );
     instance.show();
-  
-  window.addEventListener(`keydown`, closeLargeCard);
+
+    window.addEventListener(`keydown`, closeLargeCard);
     function closeLargeCard(event) {
-      if (event.code === "Escape");
+      if (event.code === "Escape") {
         instance.close();
-      window.removeEventListener(`keydown`, closeLargeCard);
+      }
     }
   }
 }
-
-
-
